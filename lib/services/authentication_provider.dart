@@ -14,13 +14,9 @@ class AuthenticationProvider {
     this.firebaseAuth,
   });
 
-  signIn(
-      {required String email,
-      required String password,
-      bool isForTesting = false}) async {
+  signIn({required String email, required String password, bool isForTesting = false}) async {
     try {
-      await firebaseAuth!
-          .signInWithEmailAndPassword(email: email, password: password);
+      await firebaseAuth!.signInWithEmailAndPassword(email: email, password: password);
 
       return true;
     } catch (e) {
@@ -32,22 +28,15 @@ class AuthenticationProvider {
   Future<bool> signUp({
     required String email,
     required String password,
-    String? year,
-    String? displayName,
     bool isForTesting = false,
   }) async {
     try {
-      var create = await firebaseAuth!
-          .createUserWithEmailAndPassword(email: email, password: password);
-
-      await create.user!.sendEmailVerification();
+      var create = await firebaseAuth!.createUserWithEmailAndPassword(email: email, password: password);
 
       if (!isForTesting)
         await _userCreate(
           email: email,
-          name: displayName,
           uid: create.user!.uid,
-          year: year,
         );
 
       return true;
@@ -59,22 +48,16 @@ class AuthenticationProvider {
   }
 
   _userCreate({
-    String? name,
-    String? email,
-    String? uid,
-    String? year,
+    required String email,
+    required String uid,
   }) async {
-    User? currentUser = firebaseAuth!.currentUser;
-
     var user = FirestoreUser(
-      name: name ?? currentUser!.displayName ?? '',
-      email: email ?? currentUser!.email ?? '',
-      uid: uid ?? currentUser!.uid,
-      year: year ?? '',
+      email: email,
+      uid: uid,
       babyBirthDate: DateTime.now(),
-      privacyPolicy: false,
+      privacyPolicy: true,
       onboardingDone: false,
-      termsNConditions: false,
+      termsNConditions: true,
     );
 
     await checkAndAddUser(user);

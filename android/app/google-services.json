@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "898952890813",
+    "project_id": "keleya-48e05",
+    "storage_bucket": "keleya-48e05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898952890813:android:d0b37157eed753dca42ad4",
+        "android_client_info": {
+          "package_name": "com.example.keleya_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898952890813-bad1j7chqt5cel5ihppsev38fv27o6dl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_aMUNObi8NLPvBEy8tjVaosoqVfb-UUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898952890813-bad1j7chqt5cel5ihppsev38fv27o6dl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
